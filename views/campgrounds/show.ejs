@@ -1,0 +1,111 @@
+<%- include('../partials/header'); %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Ashiato</p>
+            <div class="list-group">
+				<% campground.foods.forEach(function (food) { %>
+                	<li class="list-group-item">あしあと</li>
+				<% }) %>
+            </div>
+			<div class="thumbnail">
+                <img class="img-responsive" src="<%= campground.image %>">
+                <div class="caption-full">
+                    <h4><a><%= campground.name %></a></h4>
+                    <p><%= campground.description %></p>
+                    <p>
+                        <em> <strong><%= campground.author.username %></strong></em>
+                    </p>
+                    <!--The currentUser is setted up in app.js for all routes-->
+                    <% if (currentUser && (campground.author.id.equals(currentUser._id) || currentUser.username=="Rachel")) { %>
+                        <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/edit"><%= vocab.Edit[lang] %></a>
+                        <form id="delete-form" action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger"><%= vocab.Delete[lang] %></button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/foods/new"><%= vocab.Add[lang] %></a>
+                </div>
+                <hr>
+                <% campground.foods.forEach(function (food) { %>
+                	<div class="toggle_own">
+                		<div class="row food-item">
+                    		<div class="col-md-12">
+                        		<img class="food-img img-responsive" src="<%= food.image %>">
+                        		<!--currentUser is defined in app.js-->
+                        		<% if (currentUser && (food.author.id.equals(currentUser._id) || currentUser.username=="Rachel")) { %>
+                            		<a class="btn btn-xs btn-warning" 
+                               		href="/campgrounds/<%= campground._id%>/foods/<%= food._id%>/edit">
+                               		<%= vocab.Edit[lang] %>
+                            		</a>
+                            		<form id="delete-form" action="/campgrounds/<%= campground._id%>/foods/<%= food._id%>?_method=DELETE"method="POST">
+                                		<input type="submit" class="btn btn-xs btn-danger" value=<%= vocab.Delete[lang] %>>
+                            		</form>
+                        		<% } %>
+                    		</div>
+                		</div>
+						<div class="page-header">
+                    		<h4><%= vocab.Comment[lang] %> <a class="new-comment pull-right btn btn-success"><%= vocab.NewComment[lang] %></a></h4>
+                  		</div> 
+						<% food.comments.forEach(function (comment) { %>
+                		<div class="row">
+                    		<div class="col-md-12">
+                       			<div class="media">
+                            		<div class="media-body">
+                            			<strong><%= comment.author.username %></strong>
+                            			<p>
+                              				<%= comment.text %>	
+                              			</p>
+										<!--currentUser is defined in app.js-->
+										<% if (currentUser && (comment.author.id.equals(currentUser._id) || currentUser.username=="Rachel")) { %>
+											<a class="edit-btn btn btn-xs btn-warning">
+                               					<%= vocab.Edit[lang] %>
+                            				</a>
+											<form id="delete-form" action="/campgrounds/<%= campground._id%>/<%= food._id%>/comments/<%= comment._id%>?_method=DELETE"method="POST">
+                                				<input type="submit" class="btn btn-xs btn-danger" value=<%= vocab.Delete[lang] %>>
+                            				</form>
+											<div class="row edit-comment">
+            									<div style="width:90%; margin-left:15px;">
+                									<form action="/campgrounds/<%= campground.id %>/<%= food.id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+                    									<div class="form-group">
+                    										<label for="comment[text]"><%= vocab.EditComment[lang] %> </label>
+                    										<textarea class="form-control" name="comment[text]" class="form-control" rows="3" value="<%= comment.text %>"><%= comment.text %></textarea>
+                   										</div>
+                    									<div class="pull-right form-group">
+                        									<button type="submit" class="btn btn-lg btn-primary btn-block"><%= vocab.Submit[lang] %></button>
+                    									</div>
+                									</form>
+            									</div>
+        									</div>
+                        				<% } %>
+									</div>
+                          		</div>
+							</div>
+                		</div>
+						<% }) %>
+						<div class="row add-new-comment">
+            				<div style="margin:25px auto;">
+                				<form action="/campgrounds/<%= campground.id %>/<%= food.id %>/comments" method="POST">
+                    				<div class="form-group">
+                    					<label for="comment[text]"><%= vocab.NewComment[lang] %> </label>
+                    					<textarea class="form-control" name="comment[text]" class="form-control" rows="3"></textarea>
+                   					</div>
+                    				<div class="pull-right form-group">
+                        				<button type="submit" class="btn btn-lg btn-primary btn-block"><%= vocab.Submit[lang] %></button>
+                    				</div>
+                				</form>
+            				</div>
+        				</div>
+    				</div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+ <script type="text/javascript" src="/stylesheets/show.js"></script>
+<%- include('../partials/footer'); %>

@@ -1,0 +1,120 @@
+body {
+    background-color: #000;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  font-size: 450%;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://m.qpic.cn/psc?/V13pTY7v2fah5W/BMx5ghM48a7CDUBX*cPfvH.QWxB0jQsoxiqD8DLNRWzxp1qsYY305FO6*Lkab7wsm41DCRT45grr1p3qH8vdU9YIfQ*aJIOzrElolOl.KOk!/b&bo=VQhABgAPQAsRCWE!&rf=viewer_4) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://m.qpic.cn/psc?/V13pTY7v2fah5W/BMx5ghM48a7CDUBX*cPfvKLogMQgdEAfhf8MpZn3AE84fkquW04*BmEf41uKOecwTBCCWs7uCHBXIp15kxq31Bwv2bKzFJcAqvKXCD0Fqdg!/b&bo=VQhABsAMkAkRCXA!&rf=viewer_4);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://m.qpic.cn/psc?/V13pTY7v2fah5W/BMx5ghM48a7CDUBX*cPfvCh8pqZjXBAczxxsMwLYrYLNuGTufG9S6E2ePWvp4cHXmPZ9czNUApojiJTeTOVfFuGH6IK6jtWn6QpDUHva5HQ!/b&bo=VQhABsAMkAkRCXA!&rf=viewer_4);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://m.qpic.cn/psc?/V13pTY7v2fah5W/BMx5ghM48a7CDUBX*cPfvHK6CAuqDHBvfoeGFCn5kMBZXMdqh9PrQv1Ql*GZWWMC4SHyvxh4OIvZduI81BhXMPjcZCtYfnTLKGkJpbkeBQw!/b&bo=QAZVCMAMkAkRCXA!&rf=viewer_4);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://m.qpic.cn/psc?/V13pTY7v2fah5W/BMx5ghM48a7CDUBX*cPfvPqTCeruXDiq5O1kAvuw8XH6Rvhr9.ybY6iM3.x.y2bcIvF21Tolvv79NNXkRmiT9Gsselp4VRq9fZoOaef3.u8!/b&bo=VQhABsAMkAkRCXA!&rf=viewer_4);
+  animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+    opacity: 1;
+}
+
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: "Lato";
+    color: white;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 5em;
+}
+
+
+.content{
+	z-index: 1;
+  	position: relative;
+  	text-align: center;
+ 	padding-top: 40vh;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+hr {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+ }

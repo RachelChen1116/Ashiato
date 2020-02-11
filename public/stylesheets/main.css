@@ -1,0 +1,67 @@
+.thumbnail img {
+    height: 175px;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
+
+body { padding-top: 70px; }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+ }
+
+.toggle_own {
+	display:none;
+}
+
+.media{
+    border-bottom: 1px dotted #ccc;
+	padding-bottom : 10px;
+}
+
+.page-header{
+	margin-bottom : -10px;
+}
+
+.food-item {
+	padding-bottom : 10px;
+	margin-bottom : -30px;
+	border-bottom: 2px solid #ccc;
+}
+
+.new-comment{
+}
+
+.add-new-comment{
+	display:none;
+	padding-bottom: 9px;
+    margin: 5px 0 5px;
+}
+
+.edit-btn{
+	
+}
+
+.edit-comment{
+	display:none;
+}
+
+.food-img{
+	width: 1000px;
+	margin-bottom: 9px;
+}
+
+.camp_img {
+	width: 5px;
+}

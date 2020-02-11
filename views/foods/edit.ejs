@@ -1,0 +1,22 @@
+<%- include('../partials/header'); %>
+
+    <div class="container">
+        <div class="row">
+            <h1 style="text-align:center"><%= vocab.Edit[lang] %></h1>
+            <div style="width:30%; margin:25px auto;">
+                <form action="/campgrounds/<%= campground_id %>/foods/<%= food._id %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="food[image]" value="<%= food.image %>">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block"><%= vocab.Submit[lang] %></button>
+                    </div>
+                </form>
+                <a href="/campgrounds"><%= vocab.goback[lang] %></a>   
+            </div>
+                     
+        </div>
+        
+    </div>
+
+<%- include('../partials/footer'); %>

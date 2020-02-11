@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= vocab.prefix[lang] %></title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/stylesheets/main.css">
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+         <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">あしあと</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/"><%= vocab.Home[lang] %></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+		  <% if (!currentUser) { %>
+		  <li><a href="/login"><%= vocab.Login[lang] %>  <i class="fa fa-user"></i></a></li>
+		  <li><a href="/register"><%= vocab.SignUp[lang] %>  <i class="fa fa-user-plus"></i></a></li>
+		  <% } else { %>
+		  <li><a href="#"><strong><%= currentUser.username %></strong></a></li>
+		  <li><a href="/logout"><%= vocab.Logout[lang] %></a></li>
+		  <% } %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= vocab.Languages[lang] %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+			<% for (const x of Array(n_lang).keys()) { %>
+            <li <% if (lang==x) { %> class="disabled"<% } %>><a <% if (lang!=x) { %> href="/lang/<%=x%>" <% } %>><%= vocab.English[x] %></a></li>
+			<% } %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+        <!--flash message norification-->
+        <div class="container">
+            <% if (error && error.length > 0) { %>
+                <div class="alert alert-danger" role="alert"><%= error %></div>
+            <% } %>
+            <% if (success && success.length > 0) { %>
+                <div class="alert alert-success" role="alert"><%= success %></div>
+            <% } %>
+        </div>
