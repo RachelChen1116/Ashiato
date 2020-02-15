@@ -27,7 +27,7 @@ router// register an user from given request body
         // authenticate the given user
         passport.authenticate("local")(req, res, function () {
             // display the welcome flash notification and redirect
-            req.flash("success", "Welcome to Ashiato " + user.username);
+            req.flash("success", "Welcome to Ashiato! " + user.username);
             res.redirect("/campgrounds");
         });
     });

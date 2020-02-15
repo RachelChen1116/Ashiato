@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
 });
 
 // CREATE -- create new campground, POST route 
-router.post("/", middleware.isLoggedIn, function (req, res) {
+router.post("/", middleware.isRachel, function (req, res) {
     // get data from the form
     var name = req.body.name;
     var image = req.body.image;

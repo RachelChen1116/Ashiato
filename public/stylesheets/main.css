@@ -21,10 +21,6 @@ body { padding-top: 70px; }
     margin-top: 0; 
  }
 
-.toggle_own {
-	display:none;
-}
-
 .media{
     border-bottom: 1px dotted #ccc;
 	padding-bottom : 10px;
@@ -40,21 +36,9 @@ body { padding-top: 70px; }
 	border-bottom: 2px solid #ccc;
 }
 
-.new-comment{
-}
-
 .add-new-comment{
-	display:none;
 	padding-bottom: 9px;
     margin: 5px 0 5px;
-}
-
-.edit-btn{
-	
-}
-
-.edit-comment{
-	display:none;
 }
 
 .food-img{
@@ -64,4 +48,27 @@ body { padding-top: 70px; }
 
 .camp_img {
 	width: 5px;
+}
+
+.animate-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.food-list:hover{
+	background-color:#f1f1f1
+}
+
+.prv{
+	margin-left: 10px;
+	margin-right: 10px
+}
+
+.nxt{
+	margin-left: 10px;
+	margin-right: 10px
 }

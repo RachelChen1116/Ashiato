@@ -26,6 +26,7 @@ mongoose.connect(url);
 app.locals.lang = 0;
 app.locals.vocab = require("./public/stylesheets/vocab.js");
 app.locals.n_lang = app.locals.vocab.English.length;
+app.locals.emoji = require("./public/stylesheets/emoji.js");
 
 // set up body-parser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -67,4 +68,4 @@ app.use("/campgrounds/:id/foods", foodRoutes);
 app.use("/campgrounds/:camp_id/:food_id/comments", commentRoutes);
 
 // set up the server
-app.listen(process.env.PORT, process.env.IP, () => console.log("The YelpCamp Server Has Started!"));
+app.listen(3000||process.env.PORT, process.env.IP, () => console.log("The YelpCamp Server Has Started!"));

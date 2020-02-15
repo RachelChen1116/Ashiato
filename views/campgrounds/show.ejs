@@ -1,11 +1,12 @@
 <%- include('../partials/header'); %>
-<div class="container">
+<div class="container" ng-app="food-list" ng-controller="show">
     <div class="row">
         <div class="col-md-3">
             <p class="lead">Ashiato</p>
             <div class="list-group">
-				<% campground.foods.forEach(function (food) { %>
-                	<li class="list-group-item">あしあと</li>
+				<% campground.foods.forEach(function (food,index) { %>
+					<li class="list-group-item" ng-show="count == <%= index %>" style="background-color:#f1f1f1"><%= emoji() %><%= emoji() %><%= emoji() %>  </li>
+                	<li class="list-group-item food-list" ng-show="count != <%= index %>" ng-click="count = <%= index %>; newcomment = true; i_comment = -1;"><%= emoji() %> <%= emoji() %><%= emoji() %> </li>
 				<% }) %>
             </div>
 			<div class="thumbnail">
@@ -29,11 +30,13 @@
         <div class="col-md-9">
             <div class="well">
                 <div class="text-right">
+					<a class="prv pull-left btn btn-success" ng-show="count>0" ng-click="count = count-1; newcomment = true; i_comment = -1;"><%= vocab.Prev[lang] %></a>
+					<a class="nxt pull-left btn btn-success" ng-show="count<<%= campground.foods.length %>-1" ng-click="count = count+1; newcomment = true; i_comment = -1;"><%= vocab.Next[lang] %></a>
                     <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/foods/new"><%= vocab.Add[lang] %></a>
                 </div>
                 <hr>
-                <% campground.foods.forEach(function (food) { %>
-                	<div class="toggle_own">
+                <% campground.foods.forEach(function (food,index) { %>
+                	<div class="animate-show-hide" ng-hide="<%= index %> != count">
                 		<div class="row food-item">
                     		<div class="col-md-12">
                         		<img class="food-img img-responsive" src="<%= food.image %>">
@@ -50,9 +53,9 @@
                     		</div>
                 		</div>
 						<div class="page-header">
-                    		<h4><%= vocab.Comment[lang] %> <a class="new-comment pull-right btn btn-success"><%= vocab.NewComment[lang] %></a></h4>
+                    		<h4><%= vocab.Comment[lang] %> <a class="pull-right btn btn-success" ng-click="newcomment=false;i_comment = -1;"><%= vocab.NewComment[lang] %></a></h4>
                   		</div> 
-						<% food.comments.forEach(function (comment) { %>
+						<% food.comments.forEach(function (comment, index_comment) { %>
                 		<div class="row">
                     		<div class="col-md-12">
                        			<div class="media">
@@ -63,13 +66,13 @@
                               			</p>
 										<!--currentUser is defined in app.js-->
 										<% if (currentUser && (comment.author.id.equals(currentUser._id) || currentUser.username=="Rachel")) { %>
-											<a class="edit-btn btn btn-xs btn-warning">
+											<a class="btn btn-xs btn-warning" ng-click="newcomment=true; i_comment=<%= index_comment %>">
                                					<%= vocab.Edit[lang] %>
                             				</a>
 											<form id="delete-form" action="/campgrounds/<%= campground._id%>/<%= food._id%>/comments/<%= comment._id%>?_method=DELETE"method="POST">
                                 				<input type="submit" class="btn btn-xs btn-danger" value=<%= vocab.Delete[lang] %>>
                             				</form>
-											<div class="row edit-comment">
+											<div class="row" ng-hide="i_comment!=<%= index_comment %>">
             									<div style="width:90%; margin-left:15px;">
                 									<form action="/campgrounds/<%= campground.id %>/<%= food.id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                     									<div class="form-group">
@@ -88,7 +91,7 @@
 							</div>
                 		</div>
 						<% }) %>
-						<div class="row add-new-comment">
+						<div class="row add-new-comment" ng-hide="newcomment">
             				<div style="margin:25px auto;">
                 				<form action="/campgrounds/<%= campground.id %>/<%= food.id %>/comments" method="POST">
                     				<div class="form-group">

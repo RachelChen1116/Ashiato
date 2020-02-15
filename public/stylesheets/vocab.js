@@ -24,7 +24,10 @@ var vocab = {
 	"name": ["name","名字","名前","이름","nama"],
 	"NewPlace": ["Add a new place","添加新地方","新しい場所","새로운 곳","Tampat baru"],
 	"viewnew": ["View fantastic buildings and food over the world!","来看好次的~","美味しい食べ物と　素晴らしい景色を　見よ","맛있는 음식을 봐요","Lihat makanan yang enak di seluruh dunia"],
-	"Go": ["Go","让我康康","見る","봐","Lihat"]
+	"Go": ["Go","让我康康","見る","봐","Lihat"],
+	"Click": ["Click Here to See","点这里！","ここを　クリックせよ","여기를 클릭","Klik di sini"],
+	"Prev": ["Prev","上一个","前へ","지난로","Sebelumnya"],
+	"Next": ["Next","下一个","次へ","다음로","Selanjutnya"]
 };
 
 module.exports = vocab;
